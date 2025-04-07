@@ -3,6 +3,7 @@ left to right direction
 actor "Lehrer" as fc
 actor "Mitarbeiter" as ma
 rectangle Website_Schullandheim {
+  usecase  "Verfügbare Plätze suchen" as UC_Platz
   usecase "Aufenthalt buchen" as UC1
   usecase "Aufenthalt einsehen/ändern" as UC_Auf_ans
   usecase "Nutzerkonto anlegen" as UC2
@@ -11,18 +12,24 @@ rectangle Website_Schullandheim {
   usecase "Kundendaten ansehen/bearbeiten" as UC_KUNDE
   usecase "Belegungsplan anzeigen lassen" as UC_BELEGPLAN
 
+  (UC_Platz) <. (UC1) : extends
   (UC_Auf_ans) .> (UC1) : extends
   (UC_PW) .> (UC2) : extends
 }
-fc --> UC1
+'fc --> UC1
 fc --> UC2
 fc --> UC_Daten
+fc --> UC_Platz
 'fc --> UC_PW
 'fc --> UC_Auf_ans
 
 
-note "Extension Point: Aufenthalt gebucht"  as N2 
+note "Extension Point:\n Aufenthalt gebucht"  as N2 
 (UC_Auf_ans) <<-- N2
+
+note "Extension Point:\n Platz vorhanden"  as N3 
+(UC1) <<-- N3
+
 
 ma --> UC_KUNDE
 ma --> UC_BELEGPLAN
