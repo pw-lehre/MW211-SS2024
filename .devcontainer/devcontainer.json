@@ -10,7 +10,8 @@
 		"vscode": {
 			"extensions": [
 				"systemticks.c4-dsl-extension",
-				"jebbs.plantuml"
+				"jebbs.plantuml",
+				"ms-python.python"
 			]
 		}
 	},
